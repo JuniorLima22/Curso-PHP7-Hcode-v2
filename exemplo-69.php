@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Curso Udemy PHP 7 - Exemplo 68</title>
+        <title>Curso Udemy PHP 7 - Exemplo 69</title>
         <meta name="description" content="Pushy is an off-canvas navigation menu for your website.">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -32,8 +32,6 @@
     </head>
     <body>
 
-        
-
         <!-- Begin: Pushy Menu -->
           <?php require_once ("header.php"); ?>
           <?php require_once ("menu.php"); ?>
@@ -46,13 +44,6 @@
         <div id="container">
           <!-- Menu Button -->
           <button class="menu-btn">&#9776; Menu</button>
-
-          <!-- <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tratando Erros com Try e Catch</a></li>
-            <li><a href="#">Tratando Erros com Try e Catch</a></li>
-            <li class="active">Try e Catch</li>
-          </ol> -->
 
           <div class="page-header">
             <h1>Processamento de Imagem (GD)</h1>
@@ -84,116 +75,37 @@
 
                   <pre>
                     <code class="php">
-                      //Função Error
-                      function error_handler($code, $message, $file, $line){
-                        //Converte em JSON
-                        echo json_encode(array(
-                          "code"=>$code,
-                          "message"=>$message,
-                          "line"=>$line,
-                          "file"=>$file
-                        ));
-                      }
+                      header("Content-Type: image/png");
 
-                      //Mostra ao PHP qual função utilizar
-                      set_error_handler("error_handler");
+                      //Cria uma imagem e tela
+                      $image = imagecreate(256, 256);
 
-                      //Error
-                      echo 100 / 0;
+                      //Paleta de cores
+                      $black = imagecolorallocate($image, 0, 0, 0);
+                      $red = imagecolorallocate($image, 255, 0, 0);
+
+                      //Escrever na tela
+                      imagestring($image, 5, 60, 120, "Curso PHP 7", $red);
+
+                      //Informar o Formato que deve gerar
+                      imagepng($image);
+
+                      //Destruir a variavel
+                      imagedestroy($image);
                     </code>
                   </pre>
 
-                  <?php
-
-                    echo "<strong>Resultado <code>set_error_handler()</code>:</strong><br>";
-
-                    //Função Error
-                    function error_handler($code, $message, $file, $line){
-                      //Converte em JSON
-                      echo json_encode(array(
-                        "code"=>$code,
-                        "message"=>$message,
-                        "line"=>$line,
-                        "file"=>$file
-                      ));
-                    }
-
-                    //Mostra ao PHP qual função utilizar
-                    set_error_handler("error_handler");
-
-                    //Error
-                    echo 100 / 0;
-
-                    echo "<br><br>";
-                  ?>
-                </div> <!-- End: .well well-sm -->
-              </div> <!-- End: .panel-body -->
-            </div> <!-- End: .panel panel-primary -->
-            <!-- END: .panel -->
-
-            <!-- BEGIN: .panel -->
-            <div class="panel panel-primary">
-              <div class="panel-heading"><a href="" id="tiposBasicos"></a>Ignorando Warning|Notice</div>
-              <div class="panel-body">
-
-               <!--  <h2>
-                  <small>// <code>finally{}</code>: Como o próprio nome já diz "Finalmente". Idependente dele executar o <code>try</code> ou <code>catch</code> ele sempre vai executar por utimo o bloco <code>finally</code>.<br>
-                  </small>
-                </h2> -->
-
-                <!-- Documentação -->
-                <!-- <h4>Segue links para consulta:<br></h4>
-                  <h4><small>setcookie:<code> <a href="http://php.net/manual/pt_BR/function.setcookie.php" target="_blank">http://php.net/manual/pt_BR/function.setcookie.php</a></code></small><br>
-                </h4> -->
-
-                <div class='well well-sm'>
-                  <strong>Condições: </strong> <br>
-                  Ignoranar Warning|Notice.<br>
-
-                  <strong>Sintaxe da <code>error_reporting();</code> </strong><br><br>
-
-                  <pre><strong>error_reporting()</strong>
-                    <code class="php">
-                      //Se não passar os valores pela URL aparecerá o error
-                      //http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Hcode
-
-                      //Mesmo parâmetros do php.ini
-                      error_reporting(E_ALL &~E_NOTICE);
-
-                      $nome = $_GET["nome"];
-
-                      echo $nome;
-                    </code>
-                  </pre>
+                  <strong>Resultado <code>header()</code>:</strong><br>
 
                   <form method="POST">
                     <div class="row">
                       <div class="col-sm-8">
                         <div class="mbr-buttons mbr-buttons--right">
-                          <!-- <input name="revisao" class="mbr-buttons__btn btn btn-primary" type="submit" value="Adcionar valores na URL"> -->
-                          <a href="http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Curso Udemy PHP 7 - Hcode"><button type="button" class="btn btn-primary">Passar valores pela URL</button></a>
-                          
+                          <a href="exemplo-69.1.php" target="_blank"><button type="button" class="btn btn-primary">Resultado</button></a>                          
                         </div>
                       </div>
                     </div><!-- End: .row -->
                   </form>
-
-                  <?php
-
-                    echo "<strong>Resultado <code>error_reporting()</code>:</strong><br>";
-
-                    //Se não passar os valores pela URL aparecerá o error
-                    //http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Hcode
-
-                    //Mesmo parâmetros do php.ini
-                    error_reporting(E_ALL &~E_NOTICE);
-
-                    $nome = $_GET["nome"];
-
-                    echo $nome;
-                    
-                    echo "<br><br>";
-                  ?>
                 </div> <!-- End: .well well-sm -->
               </div> <!-- End: .panel-body -->
             </div> <!-- End: .panel panel-primary -->

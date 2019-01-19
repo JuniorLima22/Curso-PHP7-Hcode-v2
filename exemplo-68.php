@@ -171,7 +171,7 @@
                       <div class="col-sm-8">
                         <div class="mbr-buttons mbr-buttons--right">
                           <!-- <input name="revisao" class="mbr-buttons__btn btn btn-primary" type="submit" value="Adcionar valores na URL"> -->
-                          <a href="http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Curso Udemy PHP 7 - Hcode"><button type="button" class="btn btn-primary">Passar valores pela URL</button></a>
+                          <a href="exemplo-68.php?nome=Curso Udemy PHP 7 - Hcode"><button type="button" class="btn btn-primary">Passar valores pela URL</button></a>
                           
                         </div>
                       </div>
