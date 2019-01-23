@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Curso Udemy PHP 7 - Exemplo 69</title>
+        <title>Curso Udemy PHP 7 - Exemplo 70</title>
         <meta name="description" content="Pushy is an off-canvas navigation menu for your website.">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -46,7 +46,7 @@
           <button class="menu-btn">&#9776; Menu</button>
 
           <div class="page-header">
-            <h1>Processamento de Imagem (GD)</h1>
+            <h1>Usando imagem existente (GD)</h1>
           </div>
 
           <!-- BEGIN: Exemplos -->
@@ -54,7 +54,7 @@
 
             <!-- BEGIN: .panel -->
             <div class="panel panel-primary">
-              <div class="panel-heading"><a href="" id="tiposBasicos"></a>Processamento de Imagem (GD)</div>
+              <div class="panel-heading"><a href="" id="tiposBasicos"></a>Usando imagem existente (GD)</div>
               <div class="panel-body">
 
                 <h2>
@@ -69,39 +69,70 @@
 
                 <div class='well well-sm'>
                   <strong>Condições: </strong> <br>
-                  Criar uma imagem com PHP.<br>
+                  Editar uma imagem com PHP.<br>
 
-                  <strong>Sintaxe da <code>header();</code> </strong><br><br>
+                  <strong>Sintaxe da <code>imagecreatefromjpeg()</code> </strong><br><br>
 
-                  <pre>
+                  <pre><strong>Editando imagem</strong>
                     <code class="php">
-                      header("Content-Type: image/png");
+                      $image = imagecreatefromjpeg("assets/bibliotecaGD/certificado.jpg");
 
-                      //Cria uma imagem e tela
-                      $image = imagecreate(256, 256);
+                      //Paleta de cores no formato RGB
+                      $titleColor = imagecolorallocate($image, 0, 0, 0);
+                      $gray = imagecolorallocate($image, 100, 100, 100);
 
-                      //Paleta de cores
-                      $black = imagecolorallocate($image, 0, 0, 0);
-                      $red = imagecolorallocate($image, 255, 0, 0);
+                      //Escrever na imagem
+                      imagestring($image, 5, 450, 150, "CERTIFICADO", $titleColor);
+                      imagestring($image, 5, 440, 350, utf8_decode("Júnior Lima"), $titleColor);
+                      imagestring($image, 3, 440, 370, utf8_decode("Concluído em: ").date("d/m/Y"), $titleColor);
 
-                      //Escrever na tela
-                      imagestring($image, 5, 60, 120, "Curso PHP 7", $red);
+                      //Executar
+                      header("Content-type: image/jpeg");
 
-                      //Informar o Formato que deve gerar
-                      imagepng($image);
+                      //Função image
+                      imagejpeg($image);
 
-                      //Destruir a variavel
+                      //Destroy
                       imagedestroy($image);
                     </code>
                   </pre>
 
-                  <strong>Resultado <code>header()</code>:</strong><br>
+                  <pre><strong>Download do imagem</strong>
+                    <code class="php">
+                      $image = imagecreatefromjpeg("assets/bibliotecaGD/certificado.jpg");
+
+                      //Paleta de cores no formato RGB
+                      $titleColor = imagecolorallocate($image, 0, 0, 0);
+                      $gray = imagecolorallocate($image, 100, 100, 100);
+
+                      //Escrever na imagem
+                      imagestring($image, 5, 450, 150, "CERTIFICADO", $titleColor);
+                      imagestring($image, 5, 440, 350, utf8_decode("Júnior Lima"), $titleColor);
+                      imagestring($image, 3, 440, 370, utf8_decode("Concluído em: ").date("d/m/Y"), $titleColor);
+
+                      //Executar
+                      header("Content-type: image/jpeg");
+
+                      //Função gerar arquivo de imagem
+                      //Local onde salvar
+                      $imageSalvar = "assets/bibliotecaGD/";
+                      imagejpeg($image, "$imageSalvar"."certificado-". date("Y-m-d"). ".jpg");
+
+                      //Destroy
+                      imagedestroy($image);
+                    </code>
+                  </pre>
+
+                  <strong>Resultado <code>imagecreatefromjpeg()</code>:</strong><br>
+
+                  
 
                   <form method="POST">
                     <div class="row">
                       <div class="col-sm-8">
                         <div class="mbr-buttons mbr-buttons--right">
-                          <a href="exemplo-69.1.php" target="_blank"><button type="button" class="btn btn-primary">Resultado</button></a>                          
+                          <a href="exemplo-70.1.php" target="_blank"><button type="button" class="btn btn-primary">Visualizar Certificado</button></a>
+                          <a href="exemplo-70.2.php" target="_blank"><button type="button" class="btn btn-primary">Download Certificado</button></a>                          
                         </div>
                       </div>
                     </div><!-- End: .row -->
