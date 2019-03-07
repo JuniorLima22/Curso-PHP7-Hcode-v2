@@ -1,313 +1,273 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Curso Udemy PHP 7 - Exemplo 61</title>
+<?php
+  $tituloModulo = "Manipulando Arquivos";
+  $tituloAula = "Lendo conteúdo de arquivos";
+?>
 
-    <!-- Bootstrap -->
-    <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="estilo.css" rel="stylesheet">
+<?php require_once ("breadcrumb.php"); ?>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<div class="page-header">
+  <h1><?=$tituloAula?></h1>
+</div>
 
-    <link rel="stylesheet" href="assets/highlight/styles/monokai-sublime.css">
-    <script src="assets/highlight/highlight.pack.js"></script>
-  </head>
-  <body>
+<!-- BEGIN: Exemplos -->
+	<h4>Exemplos</h4>
 
-    <?php 
-      require_once ("menu.php");
-    ?>
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Lendo conteúdo de arquivos</div>
+    <div class="panel-body">
 
-    <div class="container">
-      
-      <div class="page-header">
-        <h1>Lendo conteúdo de arquivos</h1>
-      </div>
+      <h3>
+        <small>// <code>fgets() e fread()</code>: A única diferencia é que o <code>fgets()</code> ele ler linha por linha de um arquivo e <code>fread()</code> você precisa passar quantos bytes quer ler do arquivo.<br>
+        </small>
+      </h3>
 
-		<!-- BEGIN: Exemplos -->
-			<h4>Exemplos</h4>
+      <!-- Documentação -->
+      <h4>Segue alguns links para consulta:<br></h4>
+        <h4><small>Função fgets():<code> <a href="http://php.net/manual/pt_BR/function.fgets.php" target="_blank">http://php.net/manual/pt_BR/function.fgets.php</a></code></small></h4>
+        <h4><small>Função fread():<code> <a href="http://php.net/manual/pt_BR/function.fread.php" target="_blank">http://php.net/manual/pt_BR/function.fread.php</a></code></small></h4><br>
 
-      <!-- BEGIN: .panel -->
-      <div class="panel panel-primary">
-        <div class="panel-heading"><a href="" id="tiposBasicos"></a>Lendo conteúdo de arquivos</div>
-        <div class="panel-body">
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Ler conteúdo de um arquivo.<br>
 
-          <h3>
-            <small>// <code>fgets() e fread()</code>: A única diferencia é que o <code>fgets()</code> ele ler linha por linha de um arquivo e <code>fread()</code> você precisa passar quantos bytes quer ler do arquivo.<br>
-            </small>
-          </h3>
+        <strong>Sintaxe da <code>fgets();</code> </strong><br><br>
 
-          <!-- Documentação -->
-          <h4>Segue alguns links para consulta:<br></h4>
-            <h4><small>Função fgets():<code> <a href="http://php.net/manual/pt_BR/function.fgets.php" target="_blank">http://php.net/manual/pt_BR/function.fgets.php</a></code></small></h4>
-            <h4><small>Função fread():<code> <a href="http://php.net/manual/pt_BR/function.fread.php" target="_blank">http://php.net/manual/pt_BR/function.fread.php</a></code></small></h4><br>
+        <pre><strong>Lendo arquivo</strong>
+          <code class="php">
+            $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
 
-          <div class='well well-sm'>
-            <strong>Condições: </strong> <br>
-            Ler conteúdo de um arquivo.<br>
+            //Verifica se existe
+            if (file_exists($filename)) {
 
-            <strong>Sintaxe da <code>fgets();</code> </strong><br><br>
+              //Ler o arquivo
+              $file = fopen($filename, "r");
 
-            <pre><strong>Lendo arquivo</strong>
-              <code class="php">
-                $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
+              //Pega o cabeçalho da tabela
+              //explode() tira o separador no caso a virgula
+              $headers = explode(",", fgets($file));
 
-                //Verifica se existe
-                if (file_exists($filename)) {
+              var_dump($headers);
+            }
+          </code>
+        </pre>
 
-                  //Ler o arquivo
-                  $file = fopen($filename, "r");
+        <?php
+          echo "<strong>Resultado <code>Ler conteúdo de um arquivo</code>:</strong> <br>";
 
-                  //Pega o cabeçalho da tabela
-                  //explode() tira o separador no caso a virgula
-                  $headers = explode(",", fgets($file));
+          $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
 
-                  var_dump($headers);
-                }
-              </code>
-            </pre>
+          //Verifica se existe
+          if (file_exists($filename)) {
 
-            <?php
-              echo "<strong>Resultado <code>Ler conteúdo de um arquivo</code>:</strong> <br>";
+            //Ler o arquivo
+            $file = fopen($filename, "r");
 
-              $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
+            //Pega o cabeçalho da tabela
+            //explode() tira o separador no caso a virgula
+            $headers = explode(",", fgets($file));
 
-              //Verifica se existe
-              if (file_exists($filename)) {
+            var_dump($headers);
+          }
+          
+          echo "<br><br>";
+        ?>
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-                //Ler o arquivo
-                $file = fopen($filename, "r");
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Importa do arquivo CSV para PHP</div>
+    <div class="panel-body">
 
-                //Pega o cabeçalho da tabela
-                //explode() tira o separador no caso a virgula
-                $headers = explode(",", fgets($file));
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Ler conteúdo completo de um arquivo.<br>
 
-                var_dump($headers);
+        <strong>Sintaxe da <code>fgets();</code> </strong><br><br>
+
+        <pre><strong>Lendo arquivo</strong>
+          <code class="php">
+          $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
+
+          //Verifica se existe
+          if (file_exists($filename)) {
+
+            //Ler o arquivo
+            $file = fopen($filename, "r");
+
+            //Exibe o cabeçalho da tabela
+            //explode() tira o separador no caso a virgula
+            $headers = explode(",", fgets($file));
+
+            //Exibe array na tela
+            // var_dump($headers);
+
+            $data = array();
+
+            //exibe todas as linhas do arquivo
+            while ($row = fgets($file)) {
+              //Exibe $row na tela
+              // var_dump(explode(",", $row));
+
+              $rowData = explode(",", $row);
+              $linha = array();
+
+              //Conta quantos items tem no array $headers "Cabeçalho"
+              //Importa do arquivo CSV para PHP
+              for ($i = 0; $i < count($headers); $i++) {
+                $linha[$headers[$i]] = $rowData[$i];
               }
-              
-              echo "<br><br>";
-            ?>
-          </div> <!-- End: .well well-sm -->
-        </div> <!-- End: .panel-body -->
-      </div> <!-- End: .panel panel-primary -->
-      <!-- END: .panel -->
 
-      <!-- BEGIN: .panel -->
-      <div class="panel panel-primary">
-        <div class="panel-heading"><a href="" id="tiposBasicos"></a>Importa do arquivo CSV para PHP</div>
-        <div class="panel-body">
+              array_push($data, $linha);
+            }
 
-          <div class='well well-sm'>
-            <strong>Condições: </strong> <br>
-            Ler conteúdo completo de um arquivo.<br>
+            //Fecha arquivo
+            fclose($file);
 
-            <strong>Sintaxe da <code>fgets();</code> </strong><br><br>
+            echo json_encode($data);
+          }
+          </code>
+        </pre>
 
-            <pre><strong>Lendo arquivo</strong>
-              <code class="php">
-              $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
+        <?php
+          echo "<strong>Resultado <code>Ler conteúdo completo de um arquivo</code>:</strong> <br>";
 
-              //Verifica se existe
-              if (file_exists($filename)) {
+          $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
 
-                //Ler o arquivo
-                $file = fopen($filename, "r");
+          //Verifica se existe
+          if (file_exists($filename)) {
 
-                //Exibe o cabeçalho da tabela
-                //explode() tira o separador no caso a virgula
-                $headers = explode(",", fgets($file));
+            //Ler o arquivo
+            $file = fopen($filename, "r");
 
-                //Exibe array na tela
-                // var_dump($headers);
+            //Exibe o cabeçalho da tabela
+            //explode() tira o separador no caso a virgula
+            $headers = explode(",", fgets($file));
 
-                $data = array();
+            //Exibe array na tela
+            // var_dump($headers);
 
-                //exibe todas as linhas do arquivo
-                while ($row = fgets($file)) {
-                  //Exibe $row na tela
-                  // var_dump(explode(",", $row));
+            $data = array();
 
-                  $rowData = explode(",", $row);
-                  $linha = array();
+            //exibe todas as linhas do arquivo
+            while ($row = fgets($file)) {
+              //Exibe $row na tela
+              // var_dump(explode(",", $row));
 
-                  //Conta quantos items tem no array $headers "Cabeçalho"
-                  //Importa do arquivo CSV para PHP
-                  for ($i = 0; $i < count($headers); $i++) {
-                    $linha[$headers[$i]] = $rowData[$i];
-                  }
+              $rowData = explode(",", $row);
+              $linha = array();
 
-                  array_push($data, $linha);
-                }
-
-                //Fecha arquivo
-                fclose($file);
-
-                echo json_encode($data);
+              //Conta quantos items tem no array $headers "Cabeçalho"
+              //Importa do arquivo CSV para PHP
+              for ($i = 0; $i < count($headers); $i++) {
+                $linha[$headers[$i]] = $rowData[$i];
               }
-              </code>
-            </pre>
 
-            <?php
-              echo "<strong>Resultado <code>Ler conteúdo completo de um arquivo</code>:</strong> <br>";
+              array_push($data, $linha);
+            }
 
-              $filename = "assets/dir/fgets/tb_usuarios_dois.csv";
+            //Fecha arquivo
+            fclose($file);
 
-              //Verifica se existe
-              if (file_exists($filename)) {
+            echo json_encode($data);
+          }
+          
+          echo "<br><br>";
+        ?>
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-                //Ler o arquivo
-                $file = fopen($filename, "r");
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Fazendo leitura completa do arquivo (Convertendo Binário em Texto usando Base64)</div>
+    <div class="panel-body">
 
-                //Exibe o cabeçalho da tabela
-                //explode() tira o separador no caso a virgula
-                $headers = explode(",", fgets($file));
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Ler conteúdo completo de um arquivo binário e converter em texto.<br>
 
-                //Exibe array na tela
-                // var_dump($headers);
+        <strong>Sintaxe da <code>file_get_contents();</code> </strong><br><br>
 
-                $data = array();
+        <pre><strong>Lendo arquivo</strong>
+          <code class="php">
+            $filename = "assets/dir/fgets/html5.png";
 
-                //exibe todas as linhas do arquivo
-                while ($row = fgets($file)) {
-                  //Exibe $row na tela
-                  // var_dump(explode(",", $row));
+            //Essa função faz uma leitura completa do arquivo
+            //Base64 converte o arquivo Binário em uma String
+            $base64 = base64_encode(file_get_contents($filename));
 
-                  $rowData = explode(",", $row);
-                  $linha = array();
+            //Padrão de exibição base64 modo estático
+            echo "data:image/png;base64,". $base64;
 
-                  //Conta quantos items tem no array $headers "Cabeçalho"
-                  //Importa do arquivo CSV para PHP
-                  for ($i = 0; $i < count($headers); $i++) {
-                    $linha[$headers[$i]] = $rowData[$i];
-                  }
+            echo "<strong>Resultado <code>Ler arquivo completo modo dinâmico</code>:</strong>";
 
-                  array_push($data, $linha);
-                }
+            //Pega o tipo MIME do arquivo
+            $fileinfo = new finfo(FILEINFO_MIME_TYPE);
 
-                //Fecha arquivo
-                fclose($file);
+            $mimetype = $fileinfo->file($filename);
 
-                echo json_encode($data);
-              }
-              
-              echo "<br><br>";
-            ?>
-          </div> <!-- End: .well well-sm -->
-        </div> <!-- End: .panel-body -->
-      </div> <!-- End: .panel panel-primary -->
-      <!-- END: .panel -->
+            //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
+            echo "data:". $mimetype . ";base64,". $base64;
 
-      <!-- BEGIN: .panel -->
-      <div class="panel panel-primary">
-        <div class="panel-heading"><a href="" id="tiposBasicos"></a>Fazendo leitura completa do arquivo (Convertendo Binário em Texto usando Base64)</div>
-        <div class="panel-body">
+            echo "<strong>Resultado <code>Ler arquivo completo com hiperlink</code>:</strong>";
 
-          <div class='well well-sm'>
-            <strong>Condições: </strong> <br>
-            Ler conteúdo completo de um arquivo binário e converter em texto.<br>
+            //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
+            $base64encode = "data:". $mimetype . ";base64,". $base64;
+          </code>
+        </pre>
 
-            <strong>Sintaxe da <code>file_get_contents();</code> </strong><br><br>
+        <?php
+          echo "<strong>Resultado <code>Ler arquivo completo modo estático</code>:</strong><br>";
 
-            <pre><strong>Lendo arquivo</strong>
-              <code class="php">
-                $filename = "assets/dir/fgets/html5.png";
+          $filename = "assets/dir/fgets/html5.png";
 
-                //Essa função faz uma leitura completa do arquivo
-                //Base64 converte o arquivo Binário em uma String
-                $base64 = base64_encode(file_get_contents($filename));
+          //Essa função faz uma leitura completa do arquivo
+          //Base64 converte o arquivo Binário em uma String
+          $base64 = base64_encode(file_get_contents($filename));
 
-                //Padrão de exibição base64 modo estático
-                echo "data:image/png;base64,". $base64;
+          //Padrão de exibição base64 modo estático
+          echo "data:image/png;base64,". $base64;
 
-                echo "<strong>Resultado <code>Ler arquivo completo modo dinâmico</code>:</strong>";
+          echo "<br><br><strong>Resultado <code>Ler arquivo completo modo dinâmico</code>:</strong><br>";
 
-                //Pega o tipo MIME do arquivo
-                $fileinfo = new finfo(FILEINFO_MIME_TYPE);
+          //Pega o tipo MIME do arquivo
+          $fileinfo = new finfo(FILEINFO_MIME_TYPE);
 
-                $mimetype = $fileinfo->file($filename);
+          $mimetype = $fileinfo->file($filename);
 
-                //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
-                echo "data:". $mimetype . ";base64,". $base64;
+          //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
+          echo "data:". $mimetype . ";base64,". $base64;
 
-                echo "<strong>Resultado <code>Ler arquivo completo com hiperlink</code>:</strong>";
+          echo "<br><br><strong>Resultado <code>Ler arquivo completo com hiperlink</code>:</strong><br>";
 
-                //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
-                $base64encode = "data:". $mimetype . ";base64,". $base64;
-              </code>
-            </pre>
+          //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
+          $base64encode = "data:". $mimetype . ";base64,". $base64;
+          
+          // echo "<br><br>";
+        ?>
 
-            <?php
-              echo "<strong>Resultado <code>Ler arquivo completo modo estático</code>:</strong><br>";
+        <div class="row">
+          <div class="col-sm-6">
+            <a href="<?=$base64encode?>" target="_blank">Link para Imagem</a>
+          </div>
+        </div><!-- row -->
 
-              $filename = "assets/dir/fgets/html5.png";
+        <br><strong>Resultado <code>do Binário convertido em texto (Imagem renderizado na tela em Base64)</code>:</strong><br><br>
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <img src="<?=$base64encode?>">
+          </div>
+        </div><!-- row -->
 
-              //Essa função faz uma leitura completa do arquivo
-              //Base64 converte o arquivo Binário em uma String
-              $base64 = base64_encode(file_get_contents($filename));
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-              //Padrão de exibição base64 modo estático
-              echo "data:image/png;base64,". $base64;
-
-              echo "<br><br><strong>Resultado <code>Ler arquivo completo modo dinâmico</code>:</strong><br>";
-
-              //Pega o tipo MIME do arquivo
-              $fileinfo = new finfo(FILEINFO_MIME_TYPE);
-
-              $mimetype = $fileinfo->file($filename);
-
-              //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
-              echo "data:". $mimetype . ";base64,". $base64;
-
-              echo "<br><br><strong>Resultado <code>Ler arquivo completo com hiperlink</code>:</strong><br>";
-
-              //Padrão de exibição base64 modo dinâmico, pega automaticamente o tipo do arquivo
-              $base64encode = "data:". $mimetype . ";base64,". $base64;
-              
-              // echo "<br><br>";
-            ?>
-
-            <div class="row">
-              <div class="col-sm-6">
-                <a href="<?=$base64encode?>" target="_blank">Link para Imagem</a>
-              </div>
-            </div><!-- row -->
-
-            <br><strong>Resultado <code>do Binário convertido em texto (Imagem renderizado na tela em Base64)</code>:</strong><br><br>
-            
-            <div class="row">
-              <div class="col-sm-6">
-                <img src="<?=$base64encode?>">
-              </div>
-            </div><!-- row -->
-
-          </div> <!-- End: .well well-sm -->
-        </div> <!-- End: .panel-body -->
-      </div> <!-- End: .panel panel-primary -->
-      <!-- END: .panel -->
-
-      <!-- END: Exemplos -->
-
-			<hr>
-
-			<div class="col-sm-6">
-	      <a href="index.php"><button class="btn btn-primary">Voltar</button></a>
-	    </div>
-    </div> <!-- End: .container -->
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
-    <script>hljs.initHighlightingOnLoad();</script>
-  </body>
-</html>
+  <!-- END: Exemplos -->

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -58,7 +59,7 @@
             echo "<strong>Resultado:</strong> ";
             echo '<code>echo $_SESSION['."'nome'".'];</code> = ';
 
-            session_start();
+            // session_start();
 
             $_SESSION["nome"] = "Júnior Lima";
 

@@ -20,4 +20,6 @@
 
   //Destroy
   imagedestroy($image);
+
+  header("Location: index.php?pg=exemplo-70&m=download&#download");
 ?>

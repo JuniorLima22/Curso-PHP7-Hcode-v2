@@ -1,221 +1,153 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Curso Udemy PHP 7 - Exemplo 68</title>
-        <meta name="description" content="Pushy is an off-canvas navigation menu for your website.">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<?php
+  $tituloModulo = "Tratando Erros com Try e Catch";
+  $tituloAula = "Tratando erros";
+?>
 
-        <!-- Bootstrap -->
-        <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="estilo.css" rel="stylesheet">
+<?php require_once ("breadcrumb.php"); ?>
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+<div class="page-header">
+  <h1><?=$tituloAula?></h1>
+</div>
 
-        <link rel="stylesheet" href="assets/highlight/styles/monokai-sublime.css">
-        <script src="assets/highlight/highlight.pack.js"></script>
+<!-- BEGIN: Exemplos -->
+  <h4>Exemplos</h4>
 
-        <!-- Menu Pushy -->
-        <link rel="stylesheet" href="assets/pushyMenu/css/normalize.css">
-        <link rel="stylesheet" href="assets/pushyMenu/css/demo.css">
-        <!-- Pushy CSS -->
-        <link rel="stylesheet" href="assets/pushyMenu/css/pushy.css">
-        
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    </head>
-    <body>
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Manipulando cabeçalho de erros</div>
+    <div class="panel-body">
 
-        
+      <h2>
+        <small>// <code>try{}catch(){}</code>: .<br>
+        </small>
+      </h2>
 
-        <!-- Begin: Pushy Menu -->
-          <?php require_once ("header.php"); ?>
-          <?php require_once ("menu.php"); ?>
-        <!-- End: Pushy Menu -->
+      <!-- Documentação -->
+      <!-- <h4>Segue links para consulta:<br></h4>
+        <h4><small>setcookie:<code> <a href="http://php.net/manual/pt_BR/function.setcookie.php" target="_blank">http://php.net/manual/pt_BR/function.setcookie.php</a></code></small><br>
+      </h4> -->
 
-        <!-- Site Overlay -->
-        <div class="site-overlay"></div>
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Criar e manipular um erro no PHP.<br>
 
-        <!-- Begin: Content -->
-        <div id="container">
-          <!-- Menu Button -->
-          <button class="menu-btn">&#9776; Menu</button>
+        <strong>Sintaxe da <code>set_error_handler();</code> </strong><br><br>
 
-          <!-- <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tratando Erros com Try e Catch</a></li>
-            <li><a href="#">Tratando Erros com Try e Catch</a></li>
-            <li class="active">Try e Catch</li>
-          </ol> -->
+        <pre>
+          <code class="php">
+            //Função Error
+            function error_handler($code, $message, $file, $line){
+              //Converte em JSON
+              echo json_encode(array(
+                "code"=>$code,
+                "message"=>$message,
+                "line"=>$line,
+                "file"=>$file
+              ));
+            }
 
-          <div class="page-header">
-            <h1>Tratando erros</h1>
-          </div>
+            //Mostra ao PHP qual função utilizar
+            set_error_handler("error_handler");
 
-          <!-- BEGIN: Exemplos -->
-            <h4>Exemplos</h4>
+            //Error
+            echo 100 / 0;
+          </code>
+        </pre>
 
-            <!-- BEGIN: .panel -->
-            <div class="panel panel-primary">
-              <div class="panel-heading"><a href="" id="tiposBasicos"></a>Manipulando cabeçalho de erros</div>
-              <div class="panel-body">
+        <?php
 
-                <h2>
-                  <small>// <code>try{}catch(){}</code>: .<br>
-                  </small>
-                </h2>
+          echo "<strong>Resultado <code>set_error_handler()</code>:</strong><br>";
 
-                <!-- Documentação -->
-                <!-- <h4>Segue links para consulta:<br></h4>
-                  <h4><small>setcookie:<code> <a href="http://php.net/manual/pt_BR/function.setcookie.php" target="_blank">http://php.net/manual/pt_BR/function.setcookie.php</a></code></small><br>
-                </h4> -->
+          //Função Error
+          function error_handler($code, $message, $file, $line){
+            //Converte em JSON
+            echo json_encode(array(
+              "code"=>$code,
+              "message"=>$message,
+              "line"=>$line,
+              "file"=>$file
+            ));
+          }
 
-                <div class='well well-sm'>
-                  <strong>Condições: </strong> <br>
-                  Criar e manipular um erro no PHP.<br>
+          //Mostra ao PHP qual função utilizar
+          set_error_handler("error_handler");
 
-                  <strong>Sintaxe da <code>set_error_handler();</code> </strong><br><br>
+          //Error
+          echo 100 / 0;
 
-                  <pre>
-                    <code class="php">
-                      //Função Error
-                      function error_handler($code, $message, $file, $line){
-                        //Converte em JSON
-                        echo json_encode(array(
-                          "code"=>$code,
-                          "message"=>$message,
-                          "line"=>$line,
-                          "file"=>$file
-                        ));
-                      }
+          echo "<br><br>";
+        ?>
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-                      //Mostra ao PHP qual função utilizar
-                      set_error_handler("error_handler");
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Ignorando Warning|Notice</div>
+    <div class="panel-body">
 
-                      //Error
-                      echo 100 / 0;
-                    </code>
-                  </pre>
+     <!--  <h2>
+        <small>// <code>finally{}</code>: Como o próprio nome já diz "Finalmente". Idependente dele executar o <code>try</code> ou <code>catch</code> ele sempre vai executar por utimo o bloco <code>finally</code>.<br>
+        </small>
+      </h2> -->
 
-                  <?php
+      <!-- Documentação -->
+      <!-- <h4>Segue links para consulta:<br></h4>
+        <h4><small>setcookie:<code> <a href="http://php.net/manual/pt_BR/function.setcookie.php" target="_blank">http://php.net/manual/pt_BR/function.setcookie.php</a></code></small><br>
+      </h4> -->
 
-                    echo "<strong>Resultado <code>set_error_handler()</code>:</strong><br>";
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Ignoranar Warning|Notice.<br>
 
-                    //Função Error
-                    function error_handler($code, $message, $file, $line){
-                      //Converte em JSON
-                      echo json_encode(array(
-                        "code"=>$code,
-                        "message"=>$message,
-                        "line"=>$line,
-                        "file"=>$file
-                      ));
-                    }
+        <strong>Sintaxe da <code>error_reporting();</code> </strong><br><br>
 
-                    //Mostra ao PHP qual função utilizar
-                    set_error_handler("error_handler");
+        <pre><strong>error_reporting()</strong>
+          <code class="php">
+            //Se não passar os valores pela URL aparecerá o error
+            //http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Hcode
 
-                    //Error
-                    echo 100 / 0;
+            //Mesmo parâmetros do php.ini
+            error_reporting(E_ALL &~E_NOTICE);
 
-                    echo "<br><br>";
-                  ?>
-                </div> <!-- End: .well well-sm -->
-              </div> <!-- End: .panel-body -->
-            </div> <!-- End: .panel panel-primary -->
-            <!-- END: .panel -->
+            $nome = $_GET["nome"];
 
-            <!-- BEGIN: .panel -->
-            <div class="panel panel-primary">
-              <div class="panel-heading"><a href="" id="tiposBasicos"></a>Ignorando Warning|Notice</div>
-              <div class="panel-body">
+            echo $nome;
+          </code>
+        </pre>
 
-               <!--  <h2>
-                  <small>// <code>finally{}</code>: Como o próprio nome já diz "Finalmente". Idependente dele executar o <code>try</code> ou <code>catch</code> ele sempre vai executar por utimo o bloco <code>finally</code>.<br>
-                  </small>
-                </h2> -->
+        <form method="POST">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="mbr-buttons mbr-buttons--right">
+                <!-- <input name="revisao" class="mbr-buttons__btn btn btn-primary" type="submit" value="Adcionar valores na URL"> -->
+                <a href="index.php?pg=exemplo-68&nome=Curso Udemy PHP 7 - Hcode"><button type="button" class="btn btn-primary">Passar valores pela URL</button></a>
+                
+              </div>
+            </div>
+          </div><!-- End: .row -->
+        </form>
 
-                <!-- Documentação -->
-                <!-- <h4>Segue links para consulta:<br></h4>
-                  <h4><small>setcookie:<code> <a href="http://php.net/manual/pt_BR/function.setcookie.php" target="_blank">http://php.net/manual/pt_BR/function.setcookie.php</a></code></small><br>
-                </h4> -->
+        <?php
 
-                <div class='well well-sm'>
-                  <strong>Condições: </strong> <br>
-                  Ignoranar Warning|Notice.<br>
+          echo "<strong>Resultado <code>error_reporting()</code>:</strong><br>";
 
-                  <strong>Sintaxe da <code>error_reporting();</code> </strong><br><br>
+          //Se não passar os valores pela URL aparecerá o error
+          //http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Hcode
 
-                  <pre><strong>error_reporting()</strong>
-                    <code class="php">
-                      //Se não passar os valores pela URL aparecerá o error
-                      //http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Hcode
+          //Mesmo parâmetros do php.ini
+          error_reporting(E_ALL &~E_NOTICE);
 
-                      //Mesmo parâmetros do php.ini
-                      error_reporting(E_ALL &~E_NOTICE);
+          $nome = $_GET["nome"];
 
-                      $nome = $_GET["nome"];
+          echo $nome;
+          
+          echo "<br><br>";
+        ?>
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-                      echo $nome;
-                    </code>
-                  </pre>
-
-                  <form method="POST">
-                    <div class="row">
-                      <div class="col-sm-8">
-                        <div class="mbr-buttons mbr-buttons--right">
-                          <!-- <input name="revisao" class="mbr-buttons__btn btn btn-primary" type="submit" value="Adcionar valores na URL"> -->
-                          <a href="exemplo-68.php?nome=Curso Udemy PHP 7 - Hcode"><button type="button" class="btn btn-primary">Passar valores pela URL</button></a>
-                          
-                        </div>
-                      </div>
-                    </div><!-- End: .row -->
-                  </form>
-
-                  <?php
-
-                    echo "<strong>Resultado <code>error_reporting()</code>:</strong><br>";
-
-                    //Se não passar os valores pela URL aparecerá o error
-                    //http://localhost/Udemy/PHP/Hcode-PHP-7-v2.0.0/exemplo-68.php?nome=Hcode
-
-                    //Mesmo parâmetros do php.ini
-                    error_reporting(E_ALL &~E_NOTICE);
-
-                    $nome = $_GET["nome"];
-
-                    echo $nome;
-                    
-                    echo "<br><br>";
-                  ?>
-                </div> <!-- End: .well well-sm -->
-              </div> <!-- End: .panel-body -->
-            </div> <!-- End: .panel panel-primary -->
-            <!-- END: .panel -->
-
-            <!-- END: Exemplos -->
-
-            <!-- Menu Button -->
-          <button class="menu-btn">&#9776; Menu</button>
-        </div><!-- End: Content -->
-
-        <?php require_once ("footer.php"); ?>
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
-        <script>hljs.initHighlightingOnLoad();</script>
-
-        <!-- Pushy JS -->
-        <script src="assets/pushyMenu/js/pushy.min.js"></script>
-
-    </body>
-</html>
+  <!-- END: Exemplos -->

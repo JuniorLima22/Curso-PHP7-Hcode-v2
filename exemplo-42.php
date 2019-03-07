@@ -1,183 +1,143 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Curso Udemy PHP 7 - Exemplo 42</title>
+<?php
+  $linkModulo = "index.php?#collapseListGroup4";
+  $tituloModulo = "Programação Orientada a Objetos - Introdução";
+  $tituloAula = "Usando Namespace";
+?>
 
-    <!-- Bootstrap -->
-    <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="estilo.css" rel="stylesheet">
+<?php require_once ("breadcrumb.php"); ?>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<div class="page-header">
+  <h1><?=$tituloAula?></h1>
+</div>
 
-    <link rel="stylesheet" href="assets/highlight/styles/monokai-sublime.css">
-    <script src="assets/highlight/highlight.pack.js"></script>
-  </head>
-  <body>
+<!-- BEGIN: Exemplos -->
+	<h4>Exemplos</h4>
 
-    <?php 
-      require_once ("menu.php");
-    ?>
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Organizando as Classes e Diretórios</div>
+    <div class="panel-body">
 
-    <div class="container">
-      
-      <div class="page-header">
-        <h1>Usando Namespace</h1>
-      </div>
+      <h3>
+        <small>// <code>Namespace</code>: Ele permite agrupar as Classes dentro de diretórios de uma forma organizada, não adianta ter uma pasta com todas as Classes jogada lá dentro e achar que isso está organizado.<br>
+        </small>
+      </h3>
 
-		<!-- BEGIN: Exemplos -->
-			<h4>Exemplos</h4>
+      <h3>
+        <small>// <code>OBS</code>: Sempre recomendado fazer uma Documentação especficando cada arquivo, dessa forma você terá um codigo cada vez mais robusto e légivel.<br>
+        </small>
+      </h3>
 
-      <!-- BEGIN: .panel -->
-      <div class="panel panel-primary">
-        <div class="panel-heading"><a href="" id="tiposBasicos"></a>Organizando as Classes e Diretórios</div>
-        <div class="panel-body">
+      <h3><code>Nota</code>
+        <small>// Olá pessoal<br>
 
-          <h3>
-            <small>// <code>Namespace</code>: Ele permite agrupar as Classes dentro de diretórios de uma forma organizada, não adianta ter uma pasta com todas as Classes jogada lá dentro e achar que isso está organizado.<br>
-            </small>
-          </h3>
+          Se você estiver utilizando Linux ou Mac, pode se deparar com um erro ao reproduzir o exemplo da aula.<br>
 
-          <h3>
-            <small>// <code>OBS</code>: Sempre recomendado fazer uma Documentação especficando cada arquivo, dessa forma você terá um codigo cada vez mais robusto e légivel.<br>
-            </small>
-          </h3>
+          Para resolver esse problema, deixe a sua variável <code>$filename</code> no arquivo config.php assim:<br>
 
-          <h3><code>Nota</code>
-            <small>// Olá pessoal<br>
+          <code>$filename = str_replace ("\\", "/", $dirClass . DIRECTORY_SEPARATOR . $nameClass . ".php");</code><br>
 
-              Se você estiver utilizando Linux ou Mac, pode se deparar com um erro ao reproduzir o exemplo da aula.<br>
+          Abraço :).<br>
+        </small>
+      </h3>
 
-              Para resolver esse problema, deixe a sua variável <code>$filename</code> no arquivo config.php assim:<br>
+      <!-- Documentação -->
+      <!-- <h4>Segue alguns links para consulta:<br></h4>
+        <h4><small>Função Autoload:<code> <a href="LINK" target="_blank">LINK</a></code></small></h4>
+        <h4><small>Função SPL_Autoload_Register:<code> <a href="LINK" target="_blank">LINK</a></code></small></h4><br> -->
+          
 
-              <code>$filename = str_replace ("\\", "/", $dirClass . DIRECTORY_SEPARATOR . $nameClass . ".php");</code><br>
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Organizando as Classes e Diretórios.<br>
 
-              Abraço :).<br>
-            </small>
-          </h3>
+        <strong>Sintaxe da <code>$cad = new Cadastro();</code> </strong><br><br>
 
-          <!-- Documentação -->
-          <!-- <h4>Segue alguns links para consulta:<br></h4>
-            <h4><small>Função Autoload:<code> <a href="LINK" target="_blank">LINK</a></code></small></h4>
-            <h4><small>Função SPL_Autoload_Register:<code> <a href="LINK" target="_blank">LINK</a></code></small></h4><br> -->
-              
+        <pre>
+          <code class="php">
+            require_once("assets/namespace/config.php");
 
-          <div class='well well-sm'>
-            <strong>Condições: </strong> <br>
-            Organizando as Classes e Diretórios.<br>
+            $cad = new Cadastro();
 
-            <strong>Sintaxe da <code>$cad = new Cadastro();</code> </strong><br><br>
+            $cad->setNome("Junior Lima");              
+            $cad->setEmail("negstonseventos@hotmail.com");              
+            $cad->setSenha("juniorlimajesusteama");
 
-            <pre>
-              <code class="php">
-                require_once("assets/namespace/config.php");
+            echo $cad; 
+          </code>
+        </pre>
 
-                $cad = new Cadastro();
+        <?php
+          echo "<strong>Resultado <code>class</code>:</strong> <br>";
 
-                $cad->setNome("Junior Lima");              
-                $cad->setEmail("negstonseventos@hotmail.com");              
-                $cad->setSenha("juniorlimajesusteama");
+          require_once("assets/namespace/config.php");
 
-                echo $cad; 
-              </code>
-            </pre>
+          $cad = new Cadastro();
 
-            <?php
-              echo "<strong>Resultado <code>class</code>:</strong> <br>";
+          $cad->setNome("Junior Lima");              
+          $cad->setEmail("negstonseventos@hotmail.com");              
+          $cad->setSenha("juniorlimajesusteama");
 
-              require_once("assets/namespace/config.php");
+          echo $cad;              
 
-              $cad = new Cadastro();
+          echo "<br>";
+          ?>
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-              $cad->setNome("Junior Lima");              
-              $cad->setEmail("negstonseventos@hotmail.com");              
-              $cad->setSenha("juniorlimajesusteama");
+  <!-- BEGIN: .panel -->
+  <div class="panel panel-primary">
+    <div class="panel-heading"><a href="" id="tiposBasicos"></a>Usando Namespace</div>
+    <div class="panel-body">           
 
-              echo $cad;              
+      <div class='well well-sm'>
+        <strong>Condições: </strong> <br>
+        Usar <code>namespace</code> das Classes Cadastro Geral e Cadastro Cliente para registrar uma Venda.<br>
 
-              echo "<br>";
-              ?>
-          </div> <!-- End: .well well-sm -->
-        </div> <!-- End: .panel-body -->
-      </div> <!-- End: .panel panel-primary -->
-      <!-- END: .panel -->
+        <strong>Sintaxe da <code>use Cliente\Cadastro;</code> </strong><br><br>
 
-      <!-- BEGIN: .panel -->
-      <div class="panel panel-primary">
-        <div class="panel-heading"><a href="" id="tiposBasicos"></a>Usando Namespace</div>
-        <div class="panel-body">           
+        <pre>
+          <code class="php">
+            require_once("assets/namespace/config.php");
 
-          <div class='well well-sm'>
-            <strong>Condições: </strong> <br>
-            Usar <code>namespace</code> das Classes Cadastro Geral e Cadastro Cliente para registrar uma Venda.<br>
+            //Para utilizar o namespace precisa usar a palavra reservado (use)
+            use Cliente\Cadastro;
 
-            <strong>Sintaxe da <code>use Cliente\Cadastro;</code> </strong><br><br>
+            //Agora essa Class Cadastro se refere a Classe que esta dentro da pasta Cliente/Cadastro.php
+            $cad = new Cadastro();
 
-            <pre>
-              <code class="php">
-                require_once("assets/namespace/config.php");
+            $cad->setNome("Junior Lima");              
+            $cad->setEmail("negstonseventos@hotmail.com");              
+            $cad->setSenha("juniorlimajesusteama");
 
-                //Para utilizar o namespace precisa usar a palavra reservado (use)
-                use Cliente\Cadastro;
+            $cad->registrarVenda(); 
+          </code>
+        </pre>
 
-                //Agora essa Class Cadastro se refere a Classe que esta dentro da pasta Cliente/Cadastro.php
-                $cad = new Cadastro();
+        <?php
+          echo "<strong>Resultado <code>namespace</code>:</strong> <br>";
 
-                $cad->setNome("Junior Lima");              
-                $cad->setEmail("negstonseventos@hotmail.com");              
-                $cad->setSenha("juniorlimajesusteama");
+          require_once("assets/namespace/config.php");
 
-                $cad->registrarVenda(); 
-              </code>
-            </pre>
+          //Para utilizar o namespace precisa usar a palavra reservado (use)
+          use Cliente\Cadastro;
 
-            <?php
-              echo "<strong>Resultado <code>namespace</code>:</strong> <br>";
+          //Agora essa Class Cadastro se refere a Classe que esta dentro da pasta Cliente/Cadastro.php
+          $cad = new Cadastro();
 
-              require_once("assets/namespace/config.php");
+          $cad->setNome("Junior Lima");              
+          $cad->setEmail("negstonseventos@hotmail.com");              
+          $cad->setSenha("juniorlimajesusteama");
 
-              //Para utilizar o namespace precisa usar a palavra reservado (use)
-              use Cliente\Cadastro;
+          $cad->registrarVenda();              
 
-              //Agora essa Class Cadastro se refere a Classe que esta dentro da pasta Cliente/Cadastro.php
-              $cad = new Cadastro();
+          echo "<br>";
+          ?>
+      </div> <!-- End: .well well-sm -->
+    </div> <!-- End: .panel-body -->
+  </div> <!-- End: .panel panel-primary -->
+  <!-- END: .panel -->
 
-              $cad->setNome("Junior Lima");              
-              $cad->setEmail("negstonseventos@hotmail.com");              
-              $cad->setSenha("juniorlimajesusteama");
-
-              $cad->registrarVenda();              
-
-              echo "<br>";
-              ?>
-          </div> <!-- End: .well well-sm -->
-        </div> <!-- End: .panel-body -->
-      </div> <!-- End: .panel panel-primary -->
-      <!-- END: .panel -->
-
-      <!-- END: Exemplos -->
-
-			<hr>
-
-			<div class="col-sm-6">
-	      <a href="index.php"><button class="btn btn-primary">Voltar</button></a>
-	    </div>
-
-    </div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
-    <script>hljs.initHighlightingOnLoad();</script>
-  </body>
-</html>
+  <!-- END: Exemplos -->
