@@ -175,6 +175,27 @@
             </ul>
           </li>
 
+          <li class="pushy-submenu">
+            <button>Gerando Boletos com o BoletoPHP</button>
+            <ul>
+              <li class="pushy-link"><a href="index.php?pg=exemplo-73">Exemplo 73 -  Boleto PHP</a></li>
+            </ul>
+          </li>
+
+          <li class="pushy-submenu">
+            <button>Gerenciando dependências com Composer</button>
+            <ul>
+              <li class="pushy-link"><a href="index.php?pg=exemplo-74">Exemplo 74 -  Trabalhando com Composer</a></li>
+            </ul>
+          </li>
+
+          <li class="pushy-submenu">
+            <button>Trabalhando com E-mails usando a classe PHPMailer</button>
+            <ul>
+              <li class="pushy-link"><a href="index.php?pg=exemplo-75">Exemplo 75 -  Enviando Email com PHPMailer</a></li>
+            </ul>
+          </li>
+
           <!-- <li class="pushy-submenu">
             <button>Submenu</button>
             <ul>

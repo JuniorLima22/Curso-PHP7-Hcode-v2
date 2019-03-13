@@ -6,11 +6,11 @@
   $gray = imagecolorallocate($image, 100, 100, 100);
 
   //Escrever na imagem
-  imagettftext($image, 32, 0, 450, 150, $titleColor, __DIR__.DIRECTORY_SEPARATOR."assets".DIRECTORY_SEPARATOR."bibliotecaGD".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."Bevan".DIRECTORY_SEPARATOR."Bevan-Regular.ttf", "CERTIFICADO");
+  imagettftext($image, 32, 0, 320, 250, $titleColor, __DIR__.DIRECTORY_SEPARATOR."assets".DIRECTORY_SEPARATOR."bibliotecaGD".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."Bevan".DIRECTORY_SEPARATOR."Bevan-Regular.ttf", "CERTIFICADO");
  
-  imagettftext($image, 32, 0, 440, 350, $titleColor, __DIR__.DIRECTORY_SEPARATOR."assets".DIRECTORY_SEPARATOR."bibliotecaGD".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."Playball".DIRECTORY_SEPARATOR."Playball-Regular.ttf", "Júnior Lima");
+  imagettftext($image, 32, 0, 375, 350, $titleColor, __DIR__.DIRECTORY_SEPARATOR."assets".DIRECTORY_SEPARATOR."bibliotecaGD".DIRECTORY_SEPARATOR."fonts".DIRECTORY_SEPARATOR."Playball".DIRECTORY_SEPARATOR."Playball-Regular.ttf", "Júnior Lima");
   
-  imagestring($image, 3, 440, 370, utf8_decode("Concluído em: ").date("d/m/Y - H:i:s"), $titleColor);
+  imagestring($image, 3, 350, 370, utf8_decode("Concluído em: ").date("d/m/Y - H:i:s"), $titleColor);
 
   //Executar
   header("Content-type: image/jpeg");
