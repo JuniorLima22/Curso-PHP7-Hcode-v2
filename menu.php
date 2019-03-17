@@ -196,6 +196,20 @@
             </ul>
           </li>
 
+          <li class="pushy-submenu">
+            <button>Criando Templates com RainTPL</button>
+            <ul>
+              <li class="pushy-link"><a href="index.php?pg=exemplo-76">Exemplo 76 -  Trabalhando com templates usando RainTPL</a></li>
+            </ul>
+          </li>
+
+          <li class="pushy-submenu">
+            <button>Criando Diretórios Virtuais com o Apache</button>
+            <ul>
+              <li class="pushy-link"><a href="index.php?pg=exemplo-77">Exemplo 77 -  Utilizando o Apache para criar Virtual Hosts</a></li>
+            </ul>
+          </li>
+
           <!-- <li class="pushy-submenu">
             <button>Submenu</button>
             <ul>

@@ -20,7 +20,7 @@
 
       <div class='well well-sm'>
         <h2>
-          <small>// <code>Composer</code>: è uma gerenciador de dependências no PHP, via compuser você cria um arquivo de configuração e quem for utilizar o projeto precisa desse outro arquivo pra ser configurado para o sistema funcione corretamente, é um controle de dependências e é feito em JSON<br>
+          <small>// <code>Composer</code>: è uma gerenciador de dependências no PHP, via composer você cria um arquivo de configuração e quem for utilizar o projeto precisa desse outro arquivo pra ser configurado para o sistema funcione corretamente, é um controle de dependências e é feito em JSON<br>
           </small>
         </h2>
 
@@ -35,7 +35,7 @@
         </h4>
       </div> <!-- End: .well well-sm -->
 
-      <pre><strong>Visualizando arquivo compuser</strong>
+      <pre><strong>Visualizando arquivo composer</strong>
           <code class="json">
             {
               "name": "jrlima/composer",
